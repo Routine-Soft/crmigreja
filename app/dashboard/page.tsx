@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-
 import Home from '@/components/dashboard/UserHome';
-import PerfilAluno from '@/components/dashboard/PerfilAluno';
 import CursosDisponiveis from '@/components/dashboard/curso/CursosDisponiveis';
 import CursoConteudo from '@/components/dashboard/curso/CursoConteudo';
 
@@ -170,9 +168,6 @@ export default function UserDashboard() {
                         <CursoConteudo cursoId={cursoId} />
                     )}
 
-                    {activeSection === 'perfil' && (
-                        <PerfilAluno user={user} />
-                    )}
                 </div>
             </main>
         </div>
