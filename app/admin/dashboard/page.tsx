@@ -105,8 +105,7 @@ export default function UserAdminDashboard() {
   <Can
     user={user}
     permissions={[
-      PERMISSIONS.ADMIN_ACCESS,
-      PERMISSIONS.CELULA_ACCESS
+
     ]}
   >
     <button
@@ -129,8 +128,7 @@ export default function UserAdminDashboard() {
   <Can
     user={user}
     permissions={[
-      PERMISSIONS.ADMIN_ACCESS,
-      PERMISSIONS.CELULA_ACCESS
+
     ]}
   >
     <button
