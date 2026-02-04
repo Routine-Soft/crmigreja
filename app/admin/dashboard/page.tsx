@@ -102,12 +102,6 @@ export default function UserAdminDashboard() {
   </button>
 
   {/* ADMIN OU LIDER DE MEMBROS */}
-  <Can
-    user={user}
-    permissions={[
-
-    ]}
-  >
     <button
       onClick={() => {
         setActiveSection('membros');
@@ -122,15 +116,9 @@ export default function UserAdminDashboard() {
     >
       Membros
     </button>
-  </Can>
+
 
   {/* ADMIN OU LIDER DE MEMBROS */}
-  <Can
-    user={user}
-    permissions={[
-
-    ]}
-  >
     <button
       onClick={() => {
         setActiveSection('create-user-manual');
@@ -145,8 +133,6 @@ export default function UserAdminDashboard() {
     >
       Cadastrar Membro
     </button>
-  </Can>
-
 
   {/* ADMIN */}
   {/* <Can user={user} permissions={[PERMISSIONS.ADMIN_ACCESS]}>
