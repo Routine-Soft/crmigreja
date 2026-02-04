@@ -118,17 +118,17 @@ export default function UserLoginPage() {
 
                     {/* Footer */}
                     <div className="text-center text-sm text-gray-600">
-                        <p>
+                        {/* <p>
                             Não tem uma conta?{' '}
                             <a href="/register/user" className="text-blue-600 hover:text-blue-700 font-medium">
                                 Cadastre-se
                             </a>
-                        </p>
-                        <p className="mt-2">
+                        </p> */}
+                        {/* <p className="mt-2">
                             <a href="/login/useradmin" className="text-indigo-600 hover:text-indigo-700 font-medium">
                                 Sou administrador
                             </a>
-                        </p>
+                        </p> */}
                     </div>
 
                 </div>

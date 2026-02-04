@@ -255,7 +255,7 @@ export default function Home() {
                     <p className="text-3xl font-bold text-gray-800 mt-2">{totalGeral}</p>
                 </div>
                 <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-cyan-500">
-                    <p className="text-gray-600 text-sm font-medium">Total de Membros</p>
+                    <p className="text-gray-600 text-sm font-medium">Total de Membros do período</p>
                     <p className="text-3xl font-bold text-gray-800 mt-2">{stats.total}</p>
                 </div>
                 <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
