@@ -6,7 +6,7 @@ export default function Home() {
 
       {/* NAV */}
       <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-        <h1 className="text-2xl font-extrabold">⛪ App Igreja</h1>
+        <h1 className="text-2xl font-extrabold">⛪ CRM Igreja</h1>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           <a href="#inicio" className="hover:underline">Início</a>
           <a href="#problemas" className="hover:underline">Problemas</a>
@@ -21,7 +21,7 @@ export default function Home() {
         className="max-w-6xl mx-auto px-6 py-10 text-center"
       >
         <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
-          Tecnologia para igrejas
+          CRM para igrejas
         </p>
 
         <h2 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
@@ -29,8 +29,7 @@ export default function Home() {
         </h2>
 
         <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Tenha clareza sobre membros, novos convertidos, não batizados,
-          evangelismo e crescimento da sua igreja — tudo em um único painel.
+          Saiba quem está na igreja, quem desviou, quem não é batizado e muitas outras informações no nosso CRM feito especialmente para igrejas.
         </p>
 
       <a href="#contato">
@@ -41,9 +40,10 @@ export default function Home() {
             font-semibold text-lg
             hover:scale-105 hover:bg-gray-900
             transition-all
+            cursor-pointer
           "
         >
-          Cuidar da sua igreja agora 🚀
+          Quero cuidar da minha igreja 🚀
         </button>
       </a>
 
@@ -82,7 +82,7 @@ export default function Home() {
           "
         >
           <Image
-            src="/imgs/dashboard1.png"
+            src="/img/dashboard1.png"
             alt="Dashboard do App Igreja"
             width={1200}
             height={600}
@@ -105,11 +105,34 @@ export default function Home() {
           "
         >
           <Image
-            src="/imgs/dashboard2.png"
+            src="/img/dashboard2.png"
             alt="Dashboard do App Igreja"
             width={1200}
             height={600}
             className="w-full h-auto"
+            priority
+          />
+        </div>
+      </section>
+
+      <section className="py-2 bg-white item-center flex" >
+        <div
+          className="
+            relative mx-auto
+            max-w-5xl
+            md:rounded-2xl
+            overflow-hidden
+            shadow-2xl
+            ring-1 ring-black/10
+            bg-white
+          "
+        >
+          <Image
+            src="/img/dashboard3.png"
+            alt="Dashboard do App Igreja"
+            width={600}
+            height={300}
+            className="w-auto h-auto"
             priority
           />
         </div>
@@ -155,9 +178,10 @@ export default function Home() {
                 font-semibold text-lg
                 hover:scale-105 hover:bg-gray-900
                 transition-all
+                cursor-pointer
               "
             >
-              Cuidar da sua igreja agora 🚀
+              Quero cuidar da minha igreja 🚀
             </button>
           </a>
           </div>
@@ -196,9 +220,10 @@ export default function Home() {
                 font-semibold text-lg
                 hover:scale-105 hover:bg-gray-900
                 transition-all
+                cursor-pointer
               "
             >
-              Cuidar da minha igreja agora ✝️
+              Quero cuidar da minha igreja 🚀
             </button>
           </a>
           </div>
@@ -243,13 +268,14 @@ export default function Home() {
               <button
                 className="
                   px-8 py-4 rounded-full
-                  bg-black text-white
+                  bg-white text-black
                   font-semibold text-lg
                   hover:scale-105 hover:bg-gray-900
                   transition-all
+                  cursor-pointer
                 "
               >
-                Começar agora 🚀
+                Quero cuidar da minha igreja 🚀
               </button>
             </a>
           </div>
@@ -351,6 +377,7 @@ export default function Home() {
             font-semibold text-lg
             hover:scale-105 hover:bg-gray-900
             transition-all
+            cursor-pointer
           "
         >
           Quero cuidar da minha igreja 🚀
