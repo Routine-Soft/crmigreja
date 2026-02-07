@@ -76,7 +76,7 @@ export default function UserAdminDashboard() {
       >
         <div className="p-6 border-b border-white-700 text-white">
           <h1 className="text-xl font-bold text-white leading-tight">
-            SUA LOGO<br />
+            CRM Igreja<br />
           </h1>
           <p className="text-white text-sm mt-1">
             Admin: {user.name || user.email}
@@ -201,7 +201,7 @@ export default function UserAdminDashboard() {
             ☰
           </button>
           <span className="font-semibold text-white">
-            SUA LOGO
+            CRM Igreja
           </span>
         </header>
 

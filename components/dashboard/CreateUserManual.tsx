@@ -109,7 +109,6 @@ export default function CreateUserManual() {
                     {/* Header */}
                     <div>
                         <h1 className="text-3xl font-bold text-gray-800">Cadastrar usuário</h1>
-                        <p className="text-gray-600">A senha padrão é 123. Depois o membro troca a senha.</p>
                     </div>
                     {/* Error Message */}
                     {error && (

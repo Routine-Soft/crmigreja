@@ -70,7 +70,11 @@ const userSchema = new Schema({
     },
     status: {
         type: String,
-    }, 
+    },
+    churchId: {
+        type: [String],
+        default: []
+    }
 }, { 
     timestamps: true,
 });
