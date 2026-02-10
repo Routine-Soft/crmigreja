@@ -94,7 +94,7 @@ export default function Home() {
       <a href="/register/user">
         <button
           className="
-            md:px-8 md:py-4 px-4 py-1 rounded-full
+            md:px-8 md:py-4 px-4 py-3 rounded-full
             bg-black text-white
             font-semibold
             hover:scale-105 hover:bg-gray-900
@@ -232,7 +232,7 @@ export default function Home() {
           <a href="/register/user">
             <button
               className="
-                md:px-8 md:py-4 px-4 py-1 rounded-full
+                md:px-8 md:py-4 px-4 py-3 rounded-full
                 bg-black text-white
                 font-semibold
                 hover:scale-105 hover:bg-gray-900
@@ -274,7 +274,7 @@ export default function Home() {
           <a href="/register/user">
             <button
               className="
-                md:px-8 md:py-4 px-4 py-1 rounded-full
+                md:px-8 md:py-4 px-4 py-3 rounded-full
                 bg-black text-white
                 font-semibold
                 hover:scale-105 hover:bg-gray-900
@@ -326,7 +326,7 @@ export default function Home() {
             <a href="/register/user">
               <button
                 className="
-                  md:px-8 md:py-4 px-4 py-1 rounded-full
+                  md:px-8 md:py-4 px-4 py-3 rounded-full
                   bg-white text-black
                   font-semibold
                   hover:scale-105 hover:bg-gray-900
