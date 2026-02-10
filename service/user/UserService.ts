@@ -2,7 +2,16 @@ import { CreateUserDTO, UserIdentityDTO, UpdateUserDTO, UserResponseDTO } from '
 
 export const UserService = {
     getAllUsers: async (): Promise<{ users: UserResponseDTO[] }> => {
-        const response = await fetch('/api/user', {
+        const storedUser = localStorage.getItem('user');
+
+        if (!storedUser) {
+            throw new Error('Usuário não autenticado');
+        }
+
+        const user = JSON.parse(storedUser);
+        const ownerId = user._id;
+
+        const response = await fetch(`/api/user?owner=${ownerId}`, {
             method: 'GET',
         });
 

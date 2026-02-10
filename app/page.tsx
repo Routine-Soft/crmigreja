@@ -1,19 +1,78 @@
+'use client';
+
+import { useState } from 'react';
+
 import Image from 'next/image';
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white text-black font-sans">
 
       {/* NAV */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-md">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        
+        {/* LOGO */}
         <h1 className="text-2xl font-extrabold">⛪ CRM Igreja</h1>
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
+
+        {/* BOTÃO HAMBÚRGUER (MOBILE) */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-3xl"
+          aria-label="Abrir menu"
+        >
+          {open ? '✖' : '☰'}
+        </button>
+
+        {/* MENU DESKTOP */}
+        <nav className="hidden md:flex gap-6 text-sm font-medium items-center">
           <a href="#inicio" className="hover:underline">Início</a>
           <a href="#problemas" className="hover:underline">Problemas</a>
           <a href="#solucao" className="hover:underline">Solução</a>
-          <a href="#contato" className="hover:underline">Contato</a>
+
+          <a
+            href="/login/user"
+            className="px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition"
+          >
+            Entrar
+          </a>
+
+          <a
+            href="/register/user"
+            className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-900 transition"
+          >
+            Criar conta
+          </a>
         </nav>
-      </header>
+      </div>
+
+      {/* MENU MOBILE */}
+      {open && (
+        <div className="md:hidden bg-white border-t border-gray-200 flex flex-col text-center py-6 space-y-4">
+          <a onClick={() => setOpen(false)} href="#inicio">Início</a>
+          <a onClick={() => setOpen(false)} href="#problemas">Problemas</a>
+          <a onClick={() => setOpen(false)} href="#solucao">Solução</a>
+
+          <a
+            onClick={() => setOpen(false)}
+            href="/login/user"
+            className="mx-6 px-4 py-3 border border-black rounded-full"
+          >
+            Entrar
+          </a>
+
+          <a
+            onClick={() => setOpen(false)}
+            href="/register/user"
+            className="mx-6 px-4 py-3 bg-black text-white rounded-full"
+          >
+            Criar conta
+          </a>
+        </div>
+      )}
+    </header>
+
 
       {/* HERO */}
       <section
@@ -32,12 +91,12 @@ export default function Home() {
           Saiba quem está na igreja, quem desviou, quem não é batizado e muitas outras informações no nosso CRM feito especialmente para igrejas.
         </p>
 
-      <a href="#contato">
+      <a href="/register/user">
         <button
           className="
-            px-8 py-4 rounded-full
+            md:px-8 md:py-4 px-4 py-1 rounded-full
             bg-black text-white
-            font-semibold text-lg
+            font-semibold
             hover:scale-105 hover:bg-gray-900
             transition-all
             cursor-pointer
@@ -58,7 +117,7 @@ export default function Home() {
           px-8 py-4
           rounded-full
           bg-green-500 text-white
-          font-semibold text-lg
+          font-semibold
           hover:bg-green-600 hover:scale-105
           transition-all
         "
@@ -170,12 +229,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-          <a href="#contato">
+          <a href="/register/user">
             <button
               className="
-                px-8 py-4 rounded-full
+                md:px-8 md:py-4 px-4 py-1 rounded-full
                 bg-black text-white
-                font-semibold text-lg
+                font-semibold
                 hover:scale-105 hover:bg-gray-900
                 transition-all
                 cursor-pointer
@@ -212,12 +271,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-          <a href="#contato">
+          <a href="/register/user">
             <button
               className="
-                px-8 py-4 rounded-full
+                md:px-8 md:py-4 px-4 py-1 rounded-full
                 bg-black text-white
-                font-semibold text-lg
+                font-semibold
                 hover:scale-105 hover:bg-gray-900
                 transition-all
                 cursor-pointer
@@ -264,12 +323,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <a href="#contato">
+            <a href="/register/user">
               <button
                 className="
-                  px-8 py-4 rounded-full
+                  md:px-8 md:py-4 px-4 py-1 rounded-full
                   bg-white text-black
-                  font-semibold text-lg
+                  font-semibold
                   hover:scale-105 hover:bg-gray-900
                   transition-all
                   cursor-pointer
@@ -282,13 +341,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-  id="contato"
-  className="py-24 bg-white"
->
+  {/* <section
+    id="contato"
+    className="py-24 bg-white"
+  >
   <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
-    {/* TEXTO */}
     <div>
       <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
         Vamos cuidar da sua igreja juntos 🙏
@@ -304,89 +361,8 @@ export default function Home() {
         📩 Entraremos em contato por ligação, WhatsApp ou e-mail.
       </p>
     </div>
-
-    {/* FORMULÁRIO */}
-    <div className="border border-gray-200 rounded-2xl p-8 shadow-sm">
-      <form
-        action="https://formsubmit.co/527894bd84d24a9d8d96773ae35a4128"
-        method="POST"
-        className="space-y-6"
-      >
-        {/* CONFIG FORM SUBMIT */}
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://appigreja-two.vercel.app/obrigado" />
-
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            Nome da igreja ⛪
-          </label>
-          <input
-            type="text"
-            name="nome_da_igreja"
-            required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-black"
-            placeholder="Ex: Igreja Batista Central"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            E-mail 📧
-          </label>
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-black"
-            placeholder="seu@email.com"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            WhatsApp 📱
-          </label>
-          <input
-            type="text"
-            name="whatsapp"
-            required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-black"
-            placeholder="(99) 99999-9999"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            Quantas filiais a igreja possui? 🏛️
-          </label>
-          <input
-            type="number"
-            name="quantidade_filiais"
-            min="1"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-black"
-            placeholder="Ex: 1"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="
-            w-full py-4 rounded-full
-            bg-black text-white
-            font-semibold text-lg
-            hover:scale-105 hover:bg-gray-900
-            transition-all
-            cursor-pointer
-          "
-        >
-          Quero cuidar da minha igreja 🚀
-        </button>
-      </form>
-    </div>
-
   </div>
-</section>
+</section> */}
 
 
 {/* FOOTER */}

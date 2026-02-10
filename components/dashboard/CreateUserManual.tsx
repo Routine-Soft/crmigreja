@@ -53,9 +53,23 @@ export default function CreateUserManual() {
         setLoading(true);
 
         try {
+            const storedUser = localStorage.getItem('user');
+
+            if (!storedUser) {
+                throw new Error('Usuário não autenticado');
+            }
+
+            const user = JSON.parse(storedUser);
+
+            // ID DO PAI (ADMIN)
+            const ownerId = user._id;
+            const church = user.church;
+
             const payload: CreateUserDTO = {
                 ...formData,
                 password: DEFAULT_PASSWORD,
+                owner: ownerId, // 👈 ID DO PAI
+                church: church, // 👈 IGREJA DO PAI
             };
 
             await UserService.createUser(payload);
@@ -130,6 +144,7 @@ export default function CreateUserManual() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
                                 placeholder="Seu nome"
                             />
@@ -160,7 +175,6 @@ export default function CreateUserManual() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
                                 placeholder="seu@email.com"
                             />
@@ -195,7 +209,7 @@ export default function CreateUserManual() {
                             </select>
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                 Igreja
                             </label>
@@ -206,7 +220,7 @@ export default function CreateUserManual() {
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 border rounded-lg"
                             />
-                        </div>
+                        </div> */}
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">

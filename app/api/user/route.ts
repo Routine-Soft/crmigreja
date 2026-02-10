@@ -6,8 +6,20 @@ export async function GET(request: NextRequest) {
     try {
         await db();
 
-        // Busca TODOS os usuários (single tenant)
-        const users = await userModel.find().sort({ createdAt: -1 });
+        const { searchParams } = new URL(request.url);
+        const owner = searchParams.get('owner');
+
+        if (!owner) {
+            return NextResponse.json(
+                { error: 'Owner é obrigatório' },
+                { status: 400 }
+            );
+        }
+
+        // 🔥 BUSCA APENAS OS FILHOS DO PAI
+        const users = await userModel
+            .find({ owner })
+            .sort({ createdAt: -1 });
 
         if (!users || users.length === 0) {
             return NextResponse.json(

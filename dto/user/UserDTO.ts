@@ -20,6 +20,8 @@ export interface CreateUserDTO {
     password: string;
     permissions?: string[];
     status: string;
+    owner?: string;
+    canLogin?: boolean;
 }
 
 export interface UpdateUserDTO {
@@ -60,6 +62,7 @@ export interface UserResponseDTO {
     status: string;
     createdAt: Date;
     updatedAt: Date;
+    owner: string;
 }
 
 export interface UserIdentityDTO {
@@ -67,5 +70,6 @@ export interface UserIdentityDTO {
     token?: string;
     name?: string;
     email?: string;
+    owner?: string;
     permissions?: string[];
 }

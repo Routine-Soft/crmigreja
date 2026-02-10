@@ -30,7 +30,7 @@ export default function UserLoginPage() {
                 localStorage.setItem('token', data.token);
             }
 
-            await router.push('/admin/dashboard');
+            await router.push('/dashboard');
             
         } catch (error) {
             if (error instanceof Error) {

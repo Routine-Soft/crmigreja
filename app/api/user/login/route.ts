@@ -28,6 +28,13 @@ export async function POST(request: NextRequest) {
 
         let isPasswordValid = false;
 
+        if (!user.canLogin) {
+            return NextResponse.json(
+                { error: 'Este usuário não tem permissão para acessar o sistema' },
+                { status: 403 }
+            );
+        }
+
         try {
             isPasswordValid = await argon2.verify(user.password, password);
         } catch {

@@ -53,7 +53,7 @@ export default function UserRegisterPage() {
                 localStorage.setItem('token', data.token);
             }
 
-            await router.push('/admin/dashboard');
+            await router.push('/dashboard');
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -104,6 +104,7 @@ export default function UserRegisterPage() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
                                 placeholder="Seu nome"
                             />
@@ -119,6 +120,7 @@ export default function UserRegisterPage() {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
                                 placeholder="(00) 00000-0000"
                             />
@@ -137,6 +139,22 @@ export default function UserRegisterPage() {
                                 required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
                                 placeholder="seu@email.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="church" className="block text-sm font-medium text-gray-700 mb-2">
+                                Nome da Igreja
+                            </label>
+                            <input
+                                type="text"
+                                id="church"
+                                name="church"
+                                value={formData.church}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="Nome da Sua igreja"
                             />
                         </div>
 

@@ -71,10 +71,23 @@ const userSchema = new Schema({
     status: {
         type: String,
     },
-    churchId: {
-        type: [String],
-        default: []
-    }
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+    },
+    stripeCustomerId: {
+        type: String,
+    },
+    stripeSubscriptionId: {
+        type: String,
+    },
+    subscriptionStatus: {
+        type: String,
+    },
+    canLogin: {
+        type: Boolean,
+        default: false,
+    },
 }, { 
     timestamps: true,
 });

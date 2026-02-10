@@ -25,7 +25,21 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const user = await userModel.create(data)
+        const totalUsers = await userModel.countDocuments();
+
+        const user = await userModel.create({
+            ...data,
+
+            // se for o PRIMEIRO usuário
+            owner: totalUsers === 0 ? undefined : data.owner,
+            canLogin: totalUsers === 0, // SÓ O PRIMEIRO LOGA
+        });
+
+        // se for o primeiro, ele é dono de si mesmo
+        if (totalUsers === 0) {
+            user.owner = user._id;
+            await user.save();
+        }
 
         const response: UserResponseDTO = {
             _id: user._id.toString(),
@@ -44,6 +58,7 @@ export async function POST(request: NextRequest) {
             baptized: user.baptized,
             permissions: user.permissions,
             status: user.status,
+            owner: user._id.toString(),
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,
         }
