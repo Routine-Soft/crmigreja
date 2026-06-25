@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { UserService } from '@/service/user/UserService';
-import { UserResponseDTO } from '@/dto/user/UserDTO';
+import { MemberService } from '@/service/member/MemberService';
+import { MemberResponseDTO } from '@/dto/member/MemberDTO';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
     const currentYear = new Date().getFullYear();
     const [year, setYear] = useState(currentYear);
     const [month, setMonth] = useState<number | null>(null); // null = anual
-    const [users, setUsers] = useState<UserResponseDTO[]>([]);
+    const [users, setUsers] = useState<MemberResponseDTO[]>([]);
 
     const [stats, setStats] = useState({
         total: 0,
@@ -59,7 +59,7 @@ export default function Home() {
         return Math.round((value / totalGeral) * 100);
     };
 
-    const filterUsersByDate = (users: UserResponseDTO[]) => {
+    const filterUsersByDate = (users: MemberResponseDTO[]) => {
     return users.filter(user => {
         if (!user.createdAt) return false;
 
@@ -77,8 +77,8 @@ export default function Home() {
     useEffect(() => {
     const loadData = async () => {
       try {
-        const usersData = await UserService.getAllUsers();
-        setUsers(usersData.users || []);
+        const membersData = await MemberService.getAllMembers();
+        setUsers(membersData.members || []);
       } catch (error) {
         if (error instanceof Error) {
           console.error(error.message);

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { UserService } from '@/service/user/UserService';
-import { UpdateUserDTO, UserResponseDTO } from '@/dto/user/UserDTO';
+import { MemberService } from '@/service/member/MemberService';
+import { UpdateMemberDTO, MemberResponseDTO } from '@/dto/member/MemberDTO';
 
 type EditableField =
   | 'name'
@@ -50,21 +50,21 @@ const INVITATION_OPTIONS = ['Aceitou Jesus', 'Reconciliou', 'Troca de igreja'];
 const STATUS_OPTIONS = ['Está na igreja', 'Está afastado', 'Foi para outra igreja'];
 
 export default function Membros() {
-  const [users, setUsers] = useState<UserResponseDTO[]>([]);
-  const [filteredUsers, setFilteredUsers] = useState<UserResponseDTO[]>([]);
+  const [users, setUsers] = useState<MemberResponseDTO[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<MemberResponseDTO[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const [editingId, setEditingId] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [editForm, setEditForm] = useState<UpdateUserDTO>({});
+  const [editForm, setEditForm] = useState<UpdateMemberDTO>({});
 
   const loadData = async () => {
     try {
-      const res = await UserService.getAllUsers();
-      setUsers(res.users);
-      setFilteredUsers(res.users);
+      const res = await MemberService.getAllMembers();
+      setUsers(res.members);
+      setFilteredUsers(res.members);
     } catch (err) {
       if (err instanceof Error) setError(err.message);
     } finally {
@@ -83,7 +83,7 @@ export default function Membros() {
     setFilteredUsers(result);
   }, [search, users]);
 
-  const handleEdit = (user: UserResponseDTO) => {
+  const handleEdit = (user: MemberResponseDTO) => {
     setEditingId(user._id);
     setExpandedId(user._id);
     setEditForm({ ...user });
@@ -91,7 +91,7 @@ export default function Membros() {
 
   const handleSave = async (_id: string) => {
     try {
-      await UserService.updateUser({ _id }, editForm);
+      await MemberService.updateMember({ _id }, editForm);
       await loadData();
       setEditingId(null);
       setExpandedId(null);
@@ -101,9 +101,9 @@ export default function Membros() {
     }
   };
 
-  const handleDelete = async (user: UserResponseDTO) => {
+  const handleDelete = async (user: MemberResponseDTO) => {
     if (!confirm('Deseja apagar este membro?')) return;
-    await UserService.deleteUser({ _id: user._id, token: '' });
+    await MemberService.deleteMember({ _id: user._id, token: '' });
     setUsers(prev => prev.filter(u => u._id !== user._id));
   };
 

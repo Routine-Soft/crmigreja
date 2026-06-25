@@ -10,6 +10,8 @@ import { Can } from "@/components/can";
 import { PERMISSIONS } from "@/utils/permissions";
 import Membros from '@/components/dashboard/Membros';
 import CreateUserManual from '@/components/dashboard/CreateUserManual';
+import CreateMemberManual from '@/components/dashboard/CreateMemberManual';
+import EditProfile from '@/components/dashboard/EditProfile';
 
 type ActiveSection =
   | 'home'
@@ -17,7 +19,8 @@ type ActiveSection =
   | 'criar-curso'
   | 'membros'
   | 'celulas'
-  | 'create-user-manual';
+  | 'create-member-manual'
+  | 'edit-profile';
 
 export default function UserAdminDashboard() {
   const router = useRouter();
@@ -118,14 +121,14 @@ export default function UserAdminDashboard() {
     </button>
 
 
-  {/* ADMIN OU LIDER DE MEMBROS */}
+  {/* CADASTRAR MEMBRO */}
     <button
       onClick={() => {
-        setActiveSection('create-user-manual');
+        setActiveSection('create-member-manual');
         setMenuOpen(false);
       }}
       className={`w-full text-left text-white px-4 py-3 rounded-lg transition
-        ${activeSection === 'create-user-manual'
+        ${activeSection === 'create-member-manual'
           ? 'bg-zinc-500 font-semibold'
           : 'hover:bg-zinc-500'
         }
@@ -133,6 +136,22 @@ export default function UserAdminDashboard() {
     >
       Cadastrar Membro
     </button>
+
+  {/* EDITAR PERFIL */}
+  <button
+    onClick={() => {
+      setActiveSection('edit-profile');
+      setMenuOpen(false);
+    }}
+    className={`w-full text-left text-white px-4 py-3 rounded-lg transition
+      ${activeSection === 'edit-profile'
+        ? 'bg-zinc-500 font-semibold'
+        : 'hover:bg-zinc-500'
+      }
+    `}
+  >
+    Meu Perfil
+  </button>
 
   {/* ADMIN */}
   {/* <Can user={user} permissions={[PERMISSIONS.ADMIN_ACCESS]}>
@@ -222,8 +241,12 @@ export default function UserAdminDashboard() {
             <Membros/>
           )}
 
-          {activeSection === 'create-user-manual' && (
-            <CreateUserManual/>
+          {activeSection === 'create-member-manual' && (
+            <CreateMemberManual/>
+          )}
+
+          {activeSection === 'edit-profile' && (
+            <EditProfile />
           )}
 
           {/* {activeSection === 'celulas' && (

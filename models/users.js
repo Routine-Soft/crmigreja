@@ -86,7 +86,7 @@ const userSchema = new Schema({
     },
     canLogin: {
         type: Boolean,
-        default: false,
+        default: true,
     },
 }, { 
     timestamps: true,

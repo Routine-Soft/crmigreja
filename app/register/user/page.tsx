@@ -83,6 +83,8 @@ export default function UserRegisterPage() {
                         </div>
                         <h1 className="text-3xl font-bold text-gray-800">Criar Conta</h1>
                         <p className="text-gray-600">Cadastre-se em poucos minutos</p>
+                        <p className="text-gray-600">Plano R$100 / mês</p>
+
                     </div>
 
                     {/* Error Message */}

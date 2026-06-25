@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import db from '@/database/db';
 import userModel from '@/models/users';
+import argon2 from 'argon2';
 
 // -----------------------------------
 // GET — Buscar usuário por ID
@@ -60,6 +61,32 @@ export async function PATCH(
             );
         }
 
+        // Validar senha atual se está tentando trocar senha
+        if (data.password !== undefined) {
+            if (!data.currentPassword) {
+                return NextResponse.json(
+                    { error: 'Senha atual é obrigatória para alterar a senha' },
+                    { status: 400 }
+                );
+            }
+
+            try {
+                const isPasswordValid = await argon2.verify(user.password, data.currentPassword);
+                if (!isPasswordValid) {
+                    return NextResponse.json(
+                        { error: 'Senha atual incorreta' },
+                        { status: 401 }
+                    );
+                }
+            } catch (error) {
+                console.error('Erro ao verificar senha:', error);
+                return NextResponse.json(
+                    { error: 'Erro ao validar senha' },
+                    { status: 500 }
+                );
+            }
+        }
+
         if (data.name !== undefined) user.name = data.name;
         if (data.email !== undefined) user.email = data.email;
         if (data.phone !== undefined) user.phone = data.phone;
@@ -80,6 +107,10 @@ export async function PATCH(
         }
         if (data.status !== undefined) {
             user.status = data.status;
+        }
+        // Atualizar senha (já validada acima)
+        if (data.password !== undefined) {
+            user.password = data.password;
         }
 
         // Adicione mais campos conforme necessário

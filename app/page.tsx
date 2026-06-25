@@ -88,7 +88,7 @@ export default function Home() {
         </h2>
 
         <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Saiba quem está na igreja, quem desviou, quem não é batizado e muitas outras informações no nosso CRM feito especialmente para igrejas.
+          Saiba quem está na igreja, quem desviou, quem não é batizado com o nosso CRM feito para igrejas, por R$100 / mês.
         </p>
 
       <a href="/register/user">
@@ -340,29 +340,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-  {/* <section
-    id="contato"
-    className="py-24 bg-white"
-  >
-  <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
-        Vamos cuidar da sua igreja juntos 🙏
-      </h2>
-
-      <p className="text-gray-600 mb-6">
-        Preencha o formulário e receba mais informações sobre como o
-        App Igreja pode ajudar você a cuidar melhor das pessoas,
-        do crescimento e da saúde da sua igreja.
-      </p>
-
-      <p className="text-sm text-gray-500">
-        📩 Entraremos em contato por ligação, WhatsApp ou e-mail.
-      </p>
-    </div>
-  </div>
-</section> */}
 
 
 {/* FOOTER */}
